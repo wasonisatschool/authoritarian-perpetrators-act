@@ -26,7 +26,8 @@
   /* ====================================================
      1. FETCH & RENDER
      ==================================================== */
-  fetch('data/law.json')
+  var lawFile = document.documentElement.dataset.lawFile || 'data/law.json';
+  fetch(lawFile)
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
