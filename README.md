@@ -33,7 +33,7 @@
 ├── style.css               # 樣式（深藍主色調、Noto Serif/Sans TC）
 ├── app.js                  # 動態渲染、搜尋、導覽邏輯
 ├── data/
-│   └── law.json            # 草案全文結構化資料（8章28條）
+│   └── law.json            # 草案全文結構化資料（8章42條）
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml      # GitHub Pages 自動部署工作流程
@@ -99,8 +99,8 @@ https://wasonisatschool.github.io/authoritarian-perpetrators-act/
 | 第四章 | 處理措施 | 第13條－第17條 |
 | 第五章 | 當事人權利保障與救濟 | 第18條－第20條 |
 | 第六章 | 檔案管理與資訊公開 | 第21條－第23條 |
-| 第七章 | 罰則 | 第24條－第25條 |
-| 第八章 | 附則 | 第26條－第28條 |
+| 第七章 | 罰則 | 第24條－第39條 |
+| 第八章 | 附則 | 第40條－第42條 |
 
 ---
 
