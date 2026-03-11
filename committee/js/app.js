@@ -343,21 +343,47 @@
           for (var j = 0; j < law.regulations.length; j++) {
             var reg = law.regulations[j];
             var color = statusColors[reg.status] || '#8899aa';
+            var regulationSectionId = 'reg-' + i + '-' + j;
             html += '<div style="background: var(--bg-white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); border-left: 5px solid ' + color + ';">';
             html += '<div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">';
             html += '<h3 style="font-size: 1rem; font-family: \'Noto Sans TC\', sans-serif; color: var(--text);">' + escapeHTML(reg.title) + '</h3>';
             html += '<span style="font-size: 0.78rem; padding: 3px 10px; border-radius: 12px; background: ' + color + '20; color: ' + color + '; border: 1px solid ' + color + '40; white-space: nowrap;">' + escapeHTML(reg.status) + '</span>';
             html += '</div>';
             html += '<p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 10px;">' + escapeHTML(reg.summary) + '</p>';
-            html += '<div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted);">';
+            html += '<div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">';
             html += '<span>📌 法律依據：' + escapeHTML(reg.basis) + '</span>';
             html += '<span>🏛 發布機關：' + escapeHTML(reg.issuer) + '</span>';
             html += '</div>';
+            if (reg.articles && reg.articles.length > 0) {
+              html += '<button class="reg-toggle-btn" data-target="' + regulationSectionId + '" data-count="' + reg.articles.length + '" style="font-size:0.82rem; padding:4px 12px; border-radius:12px; border:1px solid var(--primary); background:transparent; color:var(--primary); cursor:pointer; transition: all 0.2s;">📄 查看條文（共 ' + reg.articles.length + ' 條）</button>';
+              html += '<div id="' + regulationSectionId + '" class="reg-articles" style="display:none; margin-top:16px; border-top:1px solid var(--border-light); padding-top:16px;">';
+              for (var k = 0; k < reg.articles.length; k++) {
+                var art = reg.articles[k];
+                html += '<div style="padding:12px 0; border-bottom:1px solid var(--border-light);">';
+                html += '<div style="font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:6px;">第' + art.number + '條　' + escapeHTML(art.title) + '</div>';
+                html += '<div style="font-size:0.88rem; line-height:1.9; color:var(--text); white-space:pre-wrap;">' + escapeHTML(art.content) + '</div>';
+                html += '</div>';
+              }
+              html += '</div>';
+            }
             html += '</div>';
           }
           html += '</div></div>';
         }
         regsContainer.innerHTML = html;
+
+        regsContainer.querySelectorAll('.reg-toggle-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var target = document.getElementById(btn.dataset.target);
+            if (!target) return;
+            var isOpen = target.style.display !== 'none';
+            target.style.display = isOpen ? 'none' : 'block';
+            btn.textContent = isOpen
+              ? '📄 查看條文（共 ' + btn.dataset.count + ' 條）'
+              : '▲ 收起條文';
+            btn.style.background = isOpen ? 'transparent' : 'var(--primary-pale)';
+          });
+        });
       })
       .catch(function (err) {
         regsContainer.innerHTML = '<p>無法載入配套子法資料。</p>';
