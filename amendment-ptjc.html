@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"
+      data-amendment-file="data/amendment-ptjc.json"
+      data-back-link="index.html"
+      data-back-label="← 返回條例草案全文">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="促進轉型正義條例部分條文修正草案，配合威權時期加害者識別及處理條例制定之修正草案。" />
+  <title>促進轉型正義條例部分條文修正草案</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="amendment.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header id="site-header" role="banner">
+    <button id="btn-menu" aria-label="開啟選單" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <span id="site-title">促進轉型正義條例部分條文修正草案</span>
+    <div id="header-controls">
+      <div id="search-wrapper" role="search" style="display:none"></div>
+      <span id="search-count"></span>
+      <button id="btn-print" onclick="window.print()">🖨 列印</button>
+    </div>
+  </header>
+
+  <!-- ===== Overlay (mobile) ===== -->
+  <div id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div id="layout">
+
+    <!-- ===== Sidebar ===== -->
+    <nav id="sidebar" role="navigation" aria-label="條文導覽">
+      <div id="sidebar-inner">
+        <h2>修正條文</h2>
+        <ul id="toc-list" role="list">
+          <!-- Populated by amendment.js -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main id="main" role="main">
+      <div id="law-content"></div>
+      <div id="no-results" role="status" aria-live="polite" style="display:none">
+        <div class="icon">🔍</div>
+        <p>找不到符合「<span id="no-results-term"></span>」的條文</p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer id="site-footer" role="contentinfo">
+    <p>
+      <strong>草案說明：</strong>
+      本修正草案旨在配合「威權時期加害者識別及處理條例」之制定施行，修正促進轉型正義條例相關條文，以完善轉型正義機制之分工協力。
+    </p>
+    <p style="margin-top:8px">
+      <strong>免責聲明：</strong>
+      本頁面所呈現之條文為草案性質，尚未經立法院審議通過，不具法律效力，僅供學術研究及公民討論參考之用。
+    </p>
+  </footer>
+
+  <!-- ===== Scroll to Top ===== -->
+  <button id="btn-top" aria-label="回到頂端" title="回到頂端">▲</button>
+
+  <script src="amendment.js"></script>
+</body>
+</html>
