@@ -343,7 +343,7 @@
           for (var j = 0; j < law.regulations.length; j++) {
             var reg = law.regulations[j];
             var color = statusColors[reg.status] || '#8899aa';
-            var regId = 'reg-' + i + '-' + j;
+            var regulationSectionId = 'reg-' + i + '-' + j;
             html += '<div style="background: var(--bg-white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); border-left: 5px solid ' + color + ';">';
             html += '<div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">';
             html += '<h3 style="font-size: 1rem; font-family: \'Noto Sans TC\', sans-serif; color: var(--text);">' + escapeHTML(reg.title) + '</h3>';
@@ -355,8 +355,8 @@
             html += '<span>🏛 發布機關：' + escapeHTML(reg.issuer) + '</span>';
             html += '</div>';
             if (reg.articles && reg.articles.length > 0) {
-              html += '<button class="reg-toggle-btn" data-target="' + regId + '" data-count="' + reg.articles.length + '" style="font-size:0.82rem; padding:4px 12px; border-radius:12px; border:1px solid var(--primary); background:transparent; color:var(--primary); cursor:pointer; transition: all 0.2s;">📄 查看條文（共 ' + reg.articles.length + ' 條）</button>';
-              html += '<div id="' + regId + '" class="reg-articles" style="display:none; margin-top:16px; border-top:1px solid var(--border-light); padding-top:16px;">';
+              html += '<button class="reg-toggle-btn" data-target="' + regulationSectionId + '" data-count="' + reg.articles.length + '" style="font-size:0.82rem; padding:4px 12px; border-radius:12px; border:1px solid var(--primary); background:transparent; color:var(--primary); cursor:pointer; transition: all 0.2s;">📄 查看條文（共 ' + reg.articles.length + ' 條）</button>';
+              html += '<div id="' + regulationSectionId + '" class="reg-articles" style="display:none; margin-top:16px; border-top:1px solid var(--border-light); padding-top:16px;">';
               for (var k = 0; k < reg.articles.length; k++) {
                 var art = reg.articles[k];
                 html += '<div style="padding:12px 0; border-bottom:1px solid var(--border-light);">';
