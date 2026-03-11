@@ -1,0 +1,296 @@
+/* ===================================================
+   修正草案閱覽介面 — amendment.css
+   =================================================== */
+
+/* Reuse main site variables – loaded after style.css */
+
+/* ===== Amendment Header ===== */
+.amendment-meta {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 28px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+}
+
+.amendment-meta .law-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.amendment-meta h1 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.amendment-meta .summary-text {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.9);
+}
+
+.amendment-meta .target-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.amendment-meta .target-link:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* ===== Article Block ===== */
+.amendment-article {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.amendment-article-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: #fafbfc;
+}
+
+.amendment-article-header .art-num {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.amendment-article-header .art-title {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Action badge */
+.action-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.action-badge.amend {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.action-badge.add {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.action-badge.delete {
+  background: #f8d7da;
+  color: #842029;
+}
+
+/* ===== Comparison Table ===== */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.comparison-table th {
+  padding: 10px 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 2px solid var(--border);
+}
+
+.comparison-table th.col-proposed {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.comparison-table th.col-current {
+  background: #ffeaea;
+  color: #7f1d1d;
+}
+
+.comparison-table th.col-reason {
+  background: var(--chapter-bg);
+  color: var(--primary);
+}
+
+.comparison-table td {
+  padding: 18px 20px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.comparison-table td:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+
+.comparison-table .col-proposed {
+  background: #f0fdf4;
+  width: 40%;
+}
+
+.comparison-table .col-current {
+  background: #fff5f5;
+  width: 35%;
+}
+
+.comparison-table .col-reason {
+  background: #fafbfc;
+  width: 25%;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.comparison-table .text-content {
+  white-space: pre-wrap;
+}
+
+/* ===== Sidebar TOC (amendment articles) ===== */
+#toc-list .toc-action {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 8px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+#toc-list .toc-action.amend { background: #fff3cd; color: #856404; }
+#toc-list .toc-action.add   { background: #d1e7dd; color: #0f5132; }
+#toc-list .toc-action.delete{ background: #f8d7da; color: #842029; }
+
+/* ===== Legend ===== */
+.amendment-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-light);
+}
+
+/* ===== Back nav ===== */
+.back-nav {
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+}
+
+.back-nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.back-nav a:hover { color: var(--primary); }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .comparison-table thead { display: none; }
+  .comparison-table,
+  .comparison-table tbody,
+  .comparison-table tr,
+  .comparison-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .comparison-table tr { margin-bottom: 12px; }
+
+  .comparison-table td { border-right: none !important; }
+
+  .comparison-table td.col-proposed::before {
+    content: '修正條文';
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #1b5e20;
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-table td.col-current::before {
+    content: '現行條文';
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #7f1d1d;
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-table td.col-reason::before {
+    content: '修正說明';
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .amendment-meta h1 { font-size: 1.2rem; }
+}
+
+@media print {
+  .back-nav,
+  #btn-print,
+  #btn-top,
+  #sidebar,
+  #btn-menu,
+  #sidebar-overlay { display: none !important; }
+
+  #main { margin-left: 0 !important; }
+  #layout { padding-top: 0 !important; }
+  #site-header { position: static !important; }
+
+  .amendment-meta { background: none; color: var(--text); border: 2px solid var(--primary); }
+  .amendment-meta h1 { color: var(--primary); }
+  .amendment-meta .summary-text { color: var(--text); }
+}
