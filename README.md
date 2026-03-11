@@ -29,11 +29,25 @@
 
 ```
 /
-├── index.html              # 網頁主檔
-├── style.css               # 樣式（深藍主色調、Noto Serif/Sans TC）
-├── app.js                  # 動態渲染、搜尋、導覽邏輯
+├── index.html              # 條例草案網頁主檔
+├── style.css               # 條例草案樣式
+├── app.js                  # 條例草案動態渲染、搜尋、導覽邏輯
 ├── data/
 │   └── law.json            # 草案全文結構化資料（8章42條）
+├── committee/              # 認定委員會籌備處官方網站
+│   ├── index.html          # 籌備處首頁
+│   ├── about.html          # 關於籌備處（組織架構、大事紀）
+│   ├── legal.html          # 法源依據（條例摘要、相關法規）
+│   ├── news.html           # 最新消息（含分類篩選、內文檢視）
+│   ├── faq.html            # 常見問答（手風琴式展開）
+│   ├── contact.html        # 聯絡我們（聯絡資訊、意見信箱）
+│   ├── css/
+│   │   └── style.css       # 籌備處網站樣式
+│   ├── js/
+│   │   └── app.js          # 籌備處網站功能邏輯
+│   └── data/
+│       ├── news.json       # 最新消息資料
+│       └── faq.json        # 常見問答資料
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml      # GitHub Pages 自動部署工作流程
@@ -113,6 +127,27 @@ https://wasonisatschool.github.io/authoritarian-perpetrators-act/
 | 資料格式 | JSON（`data/law.json`） |
 | 部署 | GitHub Pages（GitHub Actions 自動化） |
 | 相依套件 | 無（零外部 JS 依賴） |
+
+---
+
+## 認定委員會籌備處網站
+
+本儲存庫同時包含「**威權時期加害者認定委員會籌備處**」官方模擬網站，位於 `committee/` 目錄。
+
+### 籌備處網站功能
+
+- 🏠 **首頁**：機構介紹、核心任務、最新消息預覽、相關連結
+- 📋 **關於籌備處**：成立宗旨、組織架構（四個工作分組）、認定委員會規劃、籌備大事紀
+- ⚖️ **法源依據**：條例草案重點摘要、相關法規連結、章節總覽表
+- 📰 **最新消息**：動態載入新聞、分類篩選、新聞內文檢視
+- ❓ **常見問答**：手風琴式 FAQ、依類別分組、從 JSON 動態載入
+- 📞 **聯絡我們**：聯絡資訊、意見信箱表單、辦公位置
+
+### 籌備處網站網址
+
+```
+https://wasonisatschool.github.io/authoritarian-perpetrators-act/committee/
+```
 
 ---
 
