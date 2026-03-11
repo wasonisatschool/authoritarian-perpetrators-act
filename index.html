@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="威權時期加害者識別及處理條例（草案）全文檢索" />
+  <title>威權時期加害者識別及處理條例（草案）</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header id="site-header" role="banner">
+    <button id="btn-menu" aria-label="開啟選單" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <span id="site-title">威權時期加害者識別及處理條例（草案）</span>
+    <div id="header-controls">
+      <div id="search-wrapper" role="search">
+        <label for="search-input" class="sr-only">搜尋條文關鍵字</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="搜尋條文關鍵字…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="search-clear" aria-label="清除搜尋">✕</button>
+      </div>
+      <span id="search-count" aria-live="polite"></span>
+      <button id="btn-print" onclick="window.print()">🖨 列印</button>
+    </div>
+  </header>
+
+  <!-- ===== Overlay (mobile) ===== -->
+  <div id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div id="layout">
+
+    <!-- ===== Sidebar ===== -->
+    <nav id="sidebar" role="navigation" aria-label="章節導覽">
+      <div id="sidebar-inner">
+        <h2>章節導覽</h2>
+        <ul id="toc-list" role="list">
+          <!-- Populated by app.js -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main id="main" role="main">
+      <!-- Populated by app.js -->
+      <div id="law-content"></div>
+      <div id="no-results" role="status" aria-live="polite">
+        <div class="icon">🔍</div>
+        <p>找不到符合「<span id="no-results-term"></span>」的條文</p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer id="site-footer" role="contentinfo">
+    <p>
+      <strong>草案說明：</strong>
+      本條例草案旨在落實轉型正義，識別威權統治時期（民國34年8月15日至民國80年11月7日）參與侵害人權之加害者，並採取適當處理措施，以彰顯歷史真相、促進社會和解。
+    </p>
+    <p style="margin-top:8px">
+      <strong>免責聲明：</strong>
+      本頁面所呈現之條文為草案性質，尚未經立法院審議通過，不具法律效力，僅供學術研究及公民討論參考之用。
+    </p>
+  </footer>
+
+  <!-- ===== Scroll to Top ===== -->
+  <button id="btn-top" aria-label="回到頂端" title="回到頂端">▲</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
