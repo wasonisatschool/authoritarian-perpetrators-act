@@ -27,8 +27,22 @@
       <button class="nav-toggle" id="nav-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="./">首頁</a></li>
-        <li><a href="about.html">關於籌備處</a></li>
-        <li><a href="legal.html">法源依據</a></li>
+        <li class="nav-dropdown">
+          <a href="about.html" class="nav-dropdown-toggle">關於籌備處 <span class="caret">▼</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="about.html">成立宗旨與組織架構</a></li>
+            <li><a href="organization.html">組織辦法及編制表</a></li>
+            <li><a href="coordination.html">與行政院人權及轉型正義處協調配合</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="legal.html" class="nav-dropdown-toggle">法規文件 <span class="caret">▼</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="legal.html">法源依據</a></li>
+            <li><a href="regulations.html">配套子法</a></li>
+            <li><a href="standards.html">委員會應公布標準</a></li>
+          </ul>
+        </li>
         <li><a href="news.html">最新消息</a></li>
         <li><a href="faq.html">常見問答</a></li>
         <li><a href="contact.html">聯絡我們</a></li>
@@ -171,7 +185,11 @@
           <ul>
             <li><a href="./">首頁</a></li>
             <li><a href="about.html">關於籌備處</a></li>
+            <li><a href="organization.html">組織辦法及編制表</a></li>
             <li><a href="legal.html">法源依據</a></li>
+            <li><a href="regulations.html">配套子法</a></li>
+            <li><a href="standards.html">委員會應公布標準</a></li>
+            <li><a href="coordination.html">與行政院協調配合</a></li>
             <li><a href="news.html">最新消息</a></li>
             <li><a href="faq.html">常見問答</a></li>
             <li><a href="contact.html">聯絡我們</a></li>
