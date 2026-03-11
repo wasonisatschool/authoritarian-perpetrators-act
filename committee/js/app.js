@@ -44,6 +44,35 @@
     }
   }
 
+  /* ===== Dropdown Navigation ===== */
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  for (var d = 0; d < dropdowns.length; d++) {
+    (function (dd) {
+      var toggle = dd.querySelector('.nav-dropdown-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          // Close other dropdowns
+          for (var x = 0; x < dropdowns.length; x++) {
+            if (dropdowns[x] !== dd) dropdowns[x].classList.remove('open');
+          }
+          dd.classList.toggle('open');
+        });
+      }
+    })(dropdowns[d]);
+  }
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', function (e) {
+    var inDropdown = false;
+    for (var d2 = 0; d2 < dropdowns.length; d2++) {
+      if (dropdowns[d2].contains(e.target)) { inDropdown = true; break; }
+    }
+    if (!inDropdown) {
+      for (var d3 = 0; d3 < dropdowns.length; d3++) dropdowns[d3].classList.remove('open');
+    }
+  });
+
   /* ===== Back to Top Button ===== */
   var btnTop = document.getElementById('btn-top');
   if (btnTop) {
@@ -289,6 +318,93 @@
         }, 5000);
       }
     });
+  }
+
+  /* ===== Regulations Page ===== */
+  var regsContainer = document.getElementById('regulations-container');
+  if (regsContainer) {
+    fetch('data/regulations.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load regulations');
+        return res.json();
+      })
+      .then(function (data) {
+        var statusColors = { '研議中': '#e67e22', '預告中': '#2980b9', '已發布': '#27ae60' };
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+          var law = data[i];
+          html += '<div style="margin-bottom: 48px;">';
+          html += '<h2 style="font-size: 1.25rem; margin-bottom: 6px; display: flex; align-items: center; gap: 12px;">';
+          html += '<span>📜</span>';
+          html += '<a href="' + escapeHTML(law.lawLink) + '" style="color: var(--primary-dark);">' + escapeHTML(law.lawTitle) + '</a>';
+          html += '</h2>';
+          html += '<p style="color: var(--text-light); font-size: 0.88rem; margin-bottom: 20px; padding-left: 32px;">配套子法共 ' + law.regulations.length + ' 項</p>';
+          html += '<div style="display: grid; gap: 16px; padding-left: 0;">';
+          for (var j = 0; j < law.regulations.length; j++) {
+            var reg = law.regulations[j];
+            var color = statusColors[reg.status] || '#8899aa';
+            html += '<div style="background: var(--bg-white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); border-left: 5px solid ' + color + ';">';
+            html += '<div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">';
+            html += '<h3 style="font-size: 1rem; font-family: \'Noto Sans TC\', sans-serif; color: var(--text);">' + escapeHTML(reg.title) + '</h3>';
+            html += '<span style="font-size: 0.78rem; padding: 3px 10px; border-radius: 12px; background: ' + color + '20; color: ' + color + '; border: 1px solid ' + color + '40; white-space: nowrap;">' + escapeHTML(reg.status) + '</span>';
+            html += '</div>';
+            html += '<p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 10px;">' + escapeHTML(reg.summary) + '</p>';
+            html += '<div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted);">';
+            html += '<span>📌 法律依據：' + escapeHTML(reg.basis) + '</span>';
+            html += '<span>🏛 發布機關：' + escapeHTML(reg.issuer) + '</span>';
+            html += '</div>';
+            html += '</div>';
+          }
+          html += '</div></div>';
+        }
+        regsContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        regsContainer.innerHTML = '<p>無法載入配套子法資料。</p>';
+        console.error(err);
+      });
+  }
+
+  /* ===== Standards Page ===== */
+  var standardsContainer = document.getElementById('standards-container');
+  if (standardsContainer) {
+    fetch('data/standards.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load standards');
+        return res.json();
+      })
+      .then(function (data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+          var cat = data[i];
+          html += '<div style="margin-bottom: 48px;">';
+          html += '<h2 style="font-size: 1.2rem; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-pale); color: var(--primary);">' + escapeHTML(cat.category) + '</h2>';
+          for (var j = 0; j < cat.items.length; j++) {
+            var std = cat.items[j];
+            html += '<div style="background: var(--bg-white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); margin-bottom: 16px;">';
+            html += '<div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">';
+            html += '<h3 style="font-size: 1rem; font-family: \'Noto Sans TC\', sans-serif; color: var(--text);">' + escapeHTML(std.title) + '</h3>';
+            html += '<span style="font-size: 0.78rem; padding: 3px 10px; border-radius: 12px; background: #e8f4fd; color: #2980b9; border: 1px solid #bee3f8; white-space: nowrap;">⏱ ' + escapeHTML(std.timing) + '</span>';
+            html += '</div>';
+            html += '<p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 12px;">' + escapeHTML(std.description) + '</p>';
+            html += '<p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">📌 法律依據：' + escapeHTML(std.basis) + '</p>';
+            html += '<div style="margin-top: 12px;">';
+            html += '<p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text);">重點規範項目：</p>';
+            html += '<ul style="padding-left: 20px; color: var(--text-light); font-size: 0.88rem; line-height: 2;">';
+            for (var k = 0; k < std.keyPoints.length; k++) {
+              html += '<li>' + escapeHTML(std.keyPoints[k]) + '</li>';
+            }
+            html += '</ul></div>';
+            html += '</div>';
+          }
+          html += '</div>';
+        }
+        standardsContainer.innerHTML = html;
+      })
+      .catch(function (err) {
+        standardsContainer.innerHTML = '<p>無法載入委員會標準資料。</p>';
+        console.error(err);
+      });
   }
 
 })();
